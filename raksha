@@ -1,0 +1,5 @@
+let shippingMethodName ;
+          data.map((loc) => {
+            if(loc.displayName != "Drop Ship")
+            shippingMethodName = loc.displayName;
+          });
