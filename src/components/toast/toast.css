@@ -1,0 +1,15 @@
+.success{
+    background-color: lightgreen;
+}
+.failed{
+    background-color: red;
+}
+.invisible{
+    display: none;
+}
+.visible{
+    display: block;
+    padding: 5px 15px;
+    background-color: lightgreen;
+    box-shadow:1px 2px 5px 1px grey;
+}

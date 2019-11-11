@@ -1,0 +1,45 @@
+.container{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-0%,-50%);
+    text-align: center;
+    padding: 20px;
+    box-shadow: 1px 5px 12px 1px #bbb4b4;
+}
+.inputField{ 
+    margin: 10px 0px;
+    border: 1px solid black;
+    width: 180px;
+    font-size: 8px;
+    height: 15px;
+}
+.alignLeft{
+    text-align: Left;
+}
+.alignLeft button{
+    background-color: red;
+    width: 50%;
+    border: 1px solid darkred;
+}
+#toastMsg{
+    top: 10px;
+    width: 20%;
+    min-height: 50px;
+    left: 10%;
+    position: absolute;
+    text-align: -webkit-center;
+    top: 0px;
+    width: 85%;
+  }
+ 
+@media(max-width: 769px){
+    .container{
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #toastMsg{
+        left: 40%;
+    }
+
+}

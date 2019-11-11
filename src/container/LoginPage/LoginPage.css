@@ -1,0 +1,16 @@
+.LoginPage{
+    display: flex;
+    justify-content: space-between;
+}
+.bannerImg{
+    background-color: skyblue;
+    width: 60%;
+    height: -webkit-fill-available;
+}
+@media(max-width: 769px){
+    .bannerImg{
+        display: none;
+       
+    }
+
+}
