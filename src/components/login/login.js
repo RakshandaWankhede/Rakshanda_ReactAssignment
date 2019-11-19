@@ -2,8 +2,6 @@ import React from 'react';
 import './login.css';
 import axios from 'axios';
 import Toast from '../toast/toast';
-import ReactDOM from 'react-dom';
-
 
 class Login extends React.Component{ 
     constructor(){
@@ -13,30 +11,28 @@ class Login extends React.Component{
         this.contentType = 'application/json';
     }
     state={
-     Name:"",
-     Password:''
+     toastStatus :false,
+     toastMsg : ""
     }
-    changeHandler=(event)=>{
-        const value = event.target.value;
-        this.setState({...this.State,[event.target.name]:value});
-        this.renderToast("","invisible");
+    toastMessageHandler=(message)=>{
+        this.setState({toastStatus:false});
+        this.setState({toastStatus:true,toastMsg:message});
       }
     inputValidation=()=>{
-        if(/^\S*$/.test(this.state.Name) && /^\S*$/.test(this.state.Password)){
+        if(/^\S*$/.test(this.name.value) && /^\S*$/.test(this.password.value)){
            this.clickHandler();
         }
         else{
-            this.renderToast("Invalid Input","visible");
+            setTimeout(()=>{this.toastMessageHandler("invalid Input")},300);
         }
     }
     clickHandler = ()=>{
-        let self = this;
         axios({
         method: 'post',
         url: this.url,
         data: {
-            "username":this.state.Name,//"trupti.kashid@objectedge.com",
-            "password":this.state.Password//"Objectedge$10", 
+            "username":this.name.value,//"trupti.kashid@objectedge.com",
+            "password":this.password.value//"Objectedge$10", 
         },
         config: { headers: {
                 "Authorization":this.Authorization,
@@ -44,21 +40,14 @@ class Login extends React.Component{
                 }
         }
         })
-        .then(function (response) {
-            if(response.status === 200){
-                self.renderToast("success","visible");
+        .then(response => {
+            if(response.status == 200){
+            this.toastMessageHandler("Success");
             }
         })
-        .catch(function (response) {
-            self.renderToast("failed","visible");
+        .catch(response=> {
+            this.toastMessageHandler("Failed");
         })
-    }
-    renderToast=(toastValue,visibleToast)=>{
-        ReactDOM.render(<Toast  message={toastValue}
-            visible= {visibleToast}/>, document.getElementById('toastMsg'));
-    }
-    closeHandler=()=>{
-        this.renderToast("","invisible");
     }
     render(){
         return (
@@ -68,23 +57,19 @@ class Login extends React.Component{
                     <div className="labelWrapper alignLeft"><label>Name :</label></div>
                     <input  
                         type="text"
-                        name="Name"
+                        ref={ref => {this.name = ref;}}
                         className="inputField"
-                        onChange={this.changeHandler}
                     required></input>
-                    <br></br>
                     <div className="labelWrapper alignLeft"><label>Password :</label></div>
                     <input
                         type="password"
-                        name="Password"
+                        ref={ref => {this.password = ref;}}
                         className="inputField"
-                        onChange={this.changeHandler}
-                    required></input>
-                    <br></br>
+                    required></input>     
                     <div className="alignLeft"><button onClick ={this.inputValidation}>Submit</button></div>
                     <div id="Result"></div>
                 </div>
-                <div id="toastMsg" onClick={this.closeHandler}></div>
+                {this.state.toastStatus ? <Toast className="toastMsg" message={this.state.toastMsg}/>:null}
             </div>
         );
     }

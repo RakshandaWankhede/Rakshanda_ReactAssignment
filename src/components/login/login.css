@@ -22,7 +22,7 @@
     width: 50%;
     border: 1px solid darkred;
 }
-#toastMsg{
+/* .toastMsg{
     top: 10px;
     width: 20%;
     min-height: 50px;
@@ -31,15 +31,18 @@
     text-align: -webkit-center;
     top: 0px;
     width: 85%;
-  }
+    padding: 5px 15px;
+    background-color: lightgreen;
+    box-shadow:1px 2px 5px 1px grey;
+  }*/
  
 @media(max-width: 769px){
     .container{
         left: 50%;
         transform: translate(-50%,-50%);
     }
-    #toastMsg{
+    /* .toastMsg{
         left: 40%;
-    }
+    } */
 
-}
+} 

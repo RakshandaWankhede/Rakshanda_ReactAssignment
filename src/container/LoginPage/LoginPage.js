@@ -9,8 +9,7 @@ class LoginPage extends Component  {
   render(){
     return (
       <div className="LoginPage">
-        <Login>
-        </Login>
+        <Login/>
         <div className="bannerImg"></div>
       </div>
     );

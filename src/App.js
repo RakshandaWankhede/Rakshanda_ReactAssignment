@@ -10,8 +10,8 @@ class App extends Component  {
   render(){
     return (
       <div className="App">
-        <LoginPage></LoginPage>
-        <Homepage></Homepage>
+        <LoginPage/>
+        <Homepage/>
       </div>
     );
   }
