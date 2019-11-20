@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
-import './product.css';
+import React from 'react';
+import './product.scss';
 
 
-const product =(props)=>{
+const Product =(props)=>{
+    const {product} = props;
     return(
         <div className="cardA">
-            <div className="imageCard"><img src={props.product.compositeProducts[0].EProductMedia.smallURI}/></div>
+            <div className="imageCard"><img src={product.compositeProducts[0].EProductMedia.smallURI } alt={product.sfdcName}/></div>
             <div className="containerA">
                 <div className ="productName">
-                <p>{props.product.sfdcName}</p>
-                <p>$ {props.product.compositeProducts[0].priceEntry.listPrice}</p>
+                <p>{product.sfdcName}</p>
+                <p>$ {product.compositeProducts[0].priceEntry.listPrice}</p>
                 </div> 
                 <button className="cartButtonA">Add to Cart</button>
             </div>
         </div>
     );
-}
-export default product;
+};
+export default Product;

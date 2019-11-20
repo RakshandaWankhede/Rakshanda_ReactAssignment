@@ -1,5 +1,6 @@
 import React from 'react';
-import './login.css';
+import './login.scss';
+// eslint-disable-next-line import/imports-first
 import axios from 'axios';
 import Toast from '../toast/toast';
 
@@ -9,30 +10,33 @@ class Login extends React.Component{
         this.url ='https://dev-bepsy-api.objectedge.com/oe_commerce_api/occ/v1/oauth/login';
         this.Authorization ="Bearer YWRtaW46YWRtaW4=";
         this.contentType = 'application/json';
+        this.state={
+            toastStatus :false,
+            toastMsg : ""
+           };
     }
-    state={
-     toastStatus :false,
-     toastMsg : ""
-    }
+
     toastMessageHandler=(message)=>{
         this.setState({toastStatus:false});
         this.setState({toastStatus:true,toastMsg:message});
       }
+
     inputValidation=()=>{
         if(/^\S*$/.test(this.name.value) && /^\S*$/.test(this.password.value)){
            this.clickHandler();
         }
         else{
-            setTimeout(()=>{this.toastMessageHandler("invalid Input")},300);
+            setTimeout(()=>{this.toastMessageHandler("invalid Input");},300);
         }
     }
+
     clickHandler = ()=>{
         axios({
         method: 'post',
         url: this.url,
         data: {
-            "username":this.name.value,//"trupti.kashid@objectedge.com",
-            "password":this.password.value//"Objectedge$10", 
+            "username":this.name.value,// "trupti.kashid@objectedge.com",
+            "password":this.password.value// "Objectedge$10", 
         },
         config: { headers: {
                 "Authorization":this.Authorization,
@@ -41,35 +45,40 @@ class Login extends React.Component{
         }
         })
         .then(response => {
-            if(response.status == 200){
+            if(response.status === 200){
             this.toastMessageHandler("Success");
             }
         })
-        .catch(response=> {
+        .catch(()=> {
             this.toastMessageHandler("Failed");
-        })
+        });
     }
+
     render(){
+        const { toastStatus } = this.state;
+        const { toastMsg } = this.state;
         return (
             <div>
                 <div className='container'>
                     <h3 className="alignLeft">LOG IN</h3>
-                    <div className="labelWrapper alignLeft"><label>Name :</label></div>
-                    <input  
+                    <div className="labelWrapper alignLeft">
+                        <span >Name :</span>
+                    </div>
+                    <input 
                         type="text"
                         ref={ref => {this.name = ref;}}
                         className="inputField"
-                    required></input>
-                    <div className="labelWrapper alignLeft"><label>Password :</label></div>
+                    required />
+                    <div className="labelWrapper alignLeft"><span>Password :</span></div>
                     <input
                         type="password"
                         ref={ref => {this.password = ref;}}
                         className="inputField"
-                    required></input>     
+                    required />     
                     <div className="alignLeft"><button onClick ={this.inputValidation}>Submit</button></div>
-                    <div id="Result"></div>
+                    <div id="Result" />
                 </div>
-                {this.state.toastStatus ? <Toast className="toastMsg" message={this.state.toastMsg}/>:null}
+                {toastStatus ? <Toast message={toastMsg}/>:null}
             </div>
         );
     }

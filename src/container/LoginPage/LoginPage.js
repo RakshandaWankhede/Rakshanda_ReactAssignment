@@ -1,19 +1,15 @@
-import React, {Component} from 'react';
-import './LoginPage.css';
+import React from 'react';
+import './LoginPage.scss';
 import Login from '../../components/login/login';
 
-class LoginPage extends Component  {
-  constructor(){
-    super();
-  }
-  render(){
+  const loginPage=() =>{
     return (
       <div className="LoginPage">
         <Login/>
-        <div className="bannerImg"></div>
+        <div className="bannerImg" />
       </div>
     );
-  }
-}
+  };
 
-export default LoginPage;
+
+export default loginPage;
