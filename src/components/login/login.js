@@ -1,12 +1,14 @@
+/* eslint-disable import/imports-first */
+/* eslint-disable import/order */
 import React from 'react';
 import './login.scss';
-// eslint-disable-next-line import/imports-first
 import axios from 'axios';
 import Toast from '../toast/toast';
+import { connect } from 'react-redux';
 
 class Login extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.url =
       'https://dev-bepsy-api.objectedge.com/oe_commerce_api/occ/v1/oauth/login';
     this.Authorization = 'Bearer YWRtaW46YWRtaW4=';
@@ -48,7 +50,9 @@ class Login extends React.Component {
       }
     })
       .then(response => {
+        const { changeToken } = this.props;
         if (response.status === 200) {
+          changeToken(response.data.access_token);
           this.toastMessageHandler('Success');
         }
       })
@@ -96,4 +100,11 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+const MapDispatchToProps = Dispatch => {
+  return {
+    changeToken: token => {
+      Dispatch({ type: 'CHANGE_ACCESS_TOKEN', payload: token });
+    }
+  };
+};
+export default connect(null, MapDispatchToProps)(Login);
