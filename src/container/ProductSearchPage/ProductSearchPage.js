@@ -1,12 +1,11 @@
-/* eslint-disable import/imports-first */
 import React, { Component } from 'react';
-import './HomePage.scss';
+import './ProductSearchPage.scss';
+// eslint-disable-next-line import/imports-first
 import axios from 'axios';
-import Loader from 'react-loader-spinner';
-import Carousel from '../../components/Carousel/Carousel';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import ListingProduct from '../../components/ListingProduct/ListingProduct';
+import SearchFunctionHOC from '../../hoc/searchResult/searchResult';
 
-class HomePage extends Component {
+class ProductSearchPage extends Component {
   constructor() {
     super();
     this.url =
@@ -37,16 +36,13 @@ class HomePage extends Component {
 
   render() {
     const { products } = this.state;
+    const SearchedProducts = SearchFunctionHOC(ListingProduct, products);
     return (
-      <div className="HomePage">
-        {products.length > 0 ? (
-          <Carousel products={products} />
-        ) : (
-          <Loader type="BallTriangle" color="#000000" height={80} width={80} />
-        )}
+      <div className="ProductSearchPage">
+        <SearchedProducts />
       </div>
     );
   }
 }
 
-export default HomePage;
+export default ProductSearchPage;

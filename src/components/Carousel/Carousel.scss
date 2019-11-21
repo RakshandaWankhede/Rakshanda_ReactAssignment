@@ -1,26 +1,32 @@
-.carouselDiv{
-   position: absolute;
+.carouselDiv {
+  position: absolute;
 }
-.carouselContainer{
-    width: 645px;
-    position: relative;
-    left: 50%;
-    overflow: hidden;
-    height: 300px;
-    transform: translate(-50%,-0%);
+.carouselContainer {
+  width: 645px;
+  position: relative;
+  left: 50%;
+  overflow: hidden;
+  height: 300px;
+  transform: translate(-50%, -0%);
 }
-.carouselWrapper{
-    position: relative;
+.carouselWrapper {
+  position: relative;
 }
-.prevButton{
-    position: absolute;
-    top:40%;
-    left:5%;
-    font-size: 50px;
+.prevButton {
+  position: absolute;
+  top: 40%;
+  left: 5%;
+  font-size: 50px;
 }
-.nextButton{
-    position: absolute;
-    top:40%;
-    left:90%;
-    font-size: 50px;
+.nextButton {
+  position: absolute;
+  top: 40%;
+  left: 90%;
+  font-size: 50px;
+}
+.prevButton:hover {
+  cursor: pointer;
+}
+.nextButton:hover {
+  cursor: pointer;
 }

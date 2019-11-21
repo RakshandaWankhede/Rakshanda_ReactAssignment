@@ -1,20 +1,20 @@
-.ulTag{
-    margin: 0;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: antiquewhite;
+.ulTag {
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: antiquewhite;
 }
-.liTag{
-    list-style: none;
-    padding: 5px;
+.liTag {
+  list-style: none;
+  padding: 5px;
 }
-.liTag:hover{
-    background-color: aqua;
-    cursor: pointer;
+.liTag:hover {
+  background-color: aqua;
+  cursor: pointer;
 }
-.hrLine{
-    margin: 0%;
+.hrLine {
+  margin: 0%;
 }
-.liTag a{
-    text-decoration: none;
+.liTag a {
+  text-decoration: none;
 }

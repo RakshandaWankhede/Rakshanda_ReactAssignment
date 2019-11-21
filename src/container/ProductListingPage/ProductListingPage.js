@@ -1,12 +1,10 @@
-/* eslint-disable import/imports-first */
 import React, { Component } from 'react';
-import './HomePage.scss';
+import './ProductListingPage.scss';
+// eslint-disable-next-line import/imports-first
 import axios from 'axios';
-import Loader from 'react-loader-spinner';
-import Carousel from '../../components/Carousel/Carousel';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import ListingProduct from '../../components/ListingProduct/ListingProduct';
 
-class HomePage extends Component {
+class ProductListingPage extends Component {
   constructor() {
     super();
     this.url =
@@ -38,15 +36,11 @@ class HomePage extends Component {
   render() {
     const { products } = this.state;
     return (
-      <div className="HomePage">
-        {products.length > 0 ? (
-          <Carousel products={products} />
-        ) : (
-          <Loader type="BallTriangle" color="#000000" height={80} width={80} />
-        )}
+      <div className="ProductListingPage">
+        {products.length > 0 ? <ListingProduct products={products} /> : null}
       </div>
     );
   }
 }
 
-export default HomePage;
+export default ProductListingPage;
