@@ -1,14 +1,19 @@
 const istate = {
   name: '',
-  password: '',
-  accessToken: ''
+  products: []
 };
 
 const reducer = (state = istate, action) => {
-  if (action.type === 'CHANGE_ACCESS_TOKEN') {
+  if (action.type === 'CHANGE_NAME') {
     return {
       ...state,
-      accessToken: action.payload
+      name: action.payload
+    };
+  }
+  if (action.type === 'PRODUCTS_UPDATE') {
+    return {
+      ...state,
+      products: action.payload
     };
   }
   return state;

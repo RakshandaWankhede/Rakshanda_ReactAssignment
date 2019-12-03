@@ -50,10 +50,24 @@ class Login extends React.Component {
       }
     })
       .then(response => {
-        const { changeToken } = this.props;
         if (response.status === 200) {
-          changeToken(response.data.access_token);
           this.toastMessageHandler('Success');
+          const access_token = response.data.access_token;
+          const id = response.data.id;
+          axios({
+            method: 'get',
+            url: `https://dev-bepsy-api.objectedge.com/oe_commerce_api/occ/v1/profiles/current?profileId=${id}`,
+            headers: {
+              Authorization: `Bearer ${access_token}`
+            }
+          }).then(response => {
+            const { changeName } = this.props;
+            const fullName =
+              response.data.profile_user.firstName +
+              ' ' +
+              response.data.profile_user.lastName;
+            changeName(fullName);
+          });
         }
       })
       .catch(() => {
@@ -100,10 +114,10 @@ class Login extends React.Component {
     );
   }
 }
-const MapDispatchToProps = Dispatch => {
+const MapDispatchToProps = dispatch => {
   return {
-    changeToken: token => {
-      Dispatch({ type: 'CHANGE_ACCESS_TOKEN', payload: token });
+    changeName: token => {
+      dispatch({ type: 'CHANGE_NAME', payload: token });
     }
   };
 };
