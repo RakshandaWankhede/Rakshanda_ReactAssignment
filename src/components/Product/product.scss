@@ -1,0 +1,32 @@
+.cardA {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: inline-block;
+    width:150px;
+    margin: 10px 10px 10px 0;
+    border: 1px solid rgba(0,0,0,0.2);
+  }
+  .imageCard{
+     height: 150px;
+     width:150px;
+  }
+  .imageCard img{
+    height: 100%;
+    width:100%;
+  }
+ .containerA {
+    text-align: center;
+  } 
+  .productName{
+    height: 70px;
+    font-size: small;
+    padding: 5px;
+  }
+  .cartButtonA{
+    border: none;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    cursor: pointer;
+    width: 100%;
+  }

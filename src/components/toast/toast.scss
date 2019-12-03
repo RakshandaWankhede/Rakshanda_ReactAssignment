@@ -1,0 +1,33 @@
+.toastMsg{
+    /* min-height: 50px;
+    left: 10%;
+    position: absolute;
+    text-align: -webkit-center;
+    top: 0px;
+    width: 85%;
+    padding: 5px 15px;
+    background-color: lightgreen;
+    box-shadow:1px 2px 5px 1px grey; */
+    width: 500px;
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%,0);
+    background-color: aquamarine; 
+    text-align: center;
+    padding: 10px;
+    animation: tostDown 2s;
+    border-radius: 5px;  
+  }
+ 
+@media(max-width: 769px){
+    .toastMsg{
+        left: 40%;
+    }
+
+}
+@keyframes tostDown {
+    from{bottom: 100%;}
+    to{bottom: 91%;}
+}
